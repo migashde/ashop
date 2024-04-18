@@ -24,5 +24,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', home.home, name="home"),
     path('product/<int:product_id>', product.detail, name="detail"),
+    path('product/add', product.add_view, name="add"),
+    path('login', home.login_view, name="login"),
+    path('logout', home.logout_view, name="logout"),
     path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

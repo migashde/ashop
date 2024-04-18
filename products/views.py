@@ -9,4 +9,8 @@ def detail(request, product_id):
         "product": Product.objects.filter(pk=product_id),
     }
     return HttpResponse(template.render(context, request))
+  
+def add_view(request):
+    template = loader.get_template("add_product.html")
+    return HttpResponse(template.render())
 
