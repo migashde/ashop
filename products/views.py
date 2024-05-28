@@ -1,12 +1,13 @@
 from django.http import HttpResponse
 from django.template import loader
 
-from products.models import Product
+from products.models import Product, Product_images
 
 def detail(request, product_id):
     template = loader.get_template("view.html")
     context = {
-        "product": Product.objects.filter(pk=product_id),
+        "product": Product.objects.filter(pk=product_id).first(),
+        "product_images": Product_images.objects.filter(product_id=product_id).first(),
     }
     return HttpResponse(template.render(context, request))
   
