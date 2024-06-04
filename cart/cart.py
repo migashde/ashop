@@ -15,19 +15,20 @@ class Cart(object):
     
     def add(self, product_id: int, quantity=1, override_quantity=False):
         product = Product.objects.get(pk=product_id)
+        self.cart = {}
         if product_id not in self.cart:
             self.cart[product_id] = {'quantity': 0, 'price': str(product.price)}
         if override_quantity:
             self.cart[product_id]['quantity'] = quantity
         else:
             self.cart[product_id]['quantity'] += quantity
-        self.save()
+        self.session.modified = True
         return redirect('/') 
     
     def remove(self, product_id: int):
         if product_id in self.cart:
             del self.cart[product_id]
-        self.save()
+        self.session.modified = True
 
     def __iter__(self):
         product_ids = self.cart.keys()
@@ -49,4 +50,5 @@ class Cart(object):
     def clear(self):
         for key in list(self.cart.keys()):
             del self.cart[key]
-        self.save()
+        self.session.modified = True
+        
