@@ -18,19 +18,20 @@ from django.contrib import admin
 from django.urls import path
 from home import views as home
 from products import views as product
-from cart.cart import Cart
+from categories import views as category
+from cart import views as cart
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('', home.home, name="home"),
+    path('category/<int:category_id>', category.products, name="cat_products"),
     path('product/<int:product_id>', product.detail, name="detail"),
     path('product/add', product.add_view, name="add"),
     path('login', home.login_view, name="login"),
     path('logout', home.logout_view, name="logout"),
-    path('cart/add/<int:product_id>', Cart.add, name="cart_add"),
-    path('cart/remove', Cart.remove, name="cart_remove"),
-    path('cart/total', Cart.get_sub_total_price, name="cart_total"),
-    path('cart/clear', Cart.clear, name="cart_clear"),
+    path('cart/add/<int:product_id>', cart.add_to_cart, name="cart_add"),
+    path('cart/view', cart.cart_view, name="cart_view"),
+    path('search', home.search, name="search"),
     path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

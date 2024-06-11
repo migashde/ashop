@@ -1,39 +1,10 @@
 {% include "header.html" %}
 <main class="main-wrapper">
-  <!-- Start Categorie Area  -->
-  <div class="bg-color-white axil-section-gapcommon">
-    <div class="container">
-      <div class="slider-section-title section-title-border">
-        <h2 class="title">Ангилал</h2>
-      </div>
-      <div
-        class="categrie-product-activation-4 slick-layout-wrapper--15 axil-slick-angle angle-top-slide"
-      >
-        <div class="slick-single-layout">
-          <div class="row row-cols-lg-5 row-cols-sm-3 row-cols-2">
-            {% for cat in categories %}
-            <div class="col">
-              <div class="categrie-product categrie-product-4">
-                <a href="/category/{{ cat.id }}" class="cate-thumb">
-                  <img src="{{cat.image}}" alt="{{ cat.name }}" />
-                  <h5 class="cat-title">{{ cat.name }}</h5>
-                </a>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Categorie Area  -->
-
   <!-- Start Expolre Product Area  -->
   <div class="axil-product-area bg-color-white section-gap-80-35">
     <div class="container">
       <div class="section-title-border">
-        <h2 class="title">Бүтээгдэхүүн</h2>
-        <div class="view-btn"><a href="shop.html">Бүгдийг харах</a></div>
+        <h2 class="title">{{ category.name }}</h2>
       </div>
       <div class="row">
         {% for prod in products %}

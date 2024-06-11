@@ -90,6 +90,18 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'test', 
+#         'USER': 'sgroot',
+#         'PASSWORD': 'Z2FCmc0dr9K-IOcE',
+#         'HOST': 'SG-wooded-locust-4119-8832-mysql-master.servers.mongodirector.com',
+#         'PORT': '3306',
+#         'OPTIONS': {'charset': 'utf8mb4'},
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

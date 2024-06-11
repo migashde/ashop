@@ -141,7 +141,7 @@
                     >
                     {% for cat in categories %}
                         <li>
-                            <a class="dropdown-item" href="{{ cat.id }}">{{ cat.name }}</a>
+                            <a class="dropdown-item" href="/category/{{ cat.id }}">{{ cat.name }}</a>
                         </li>
                     {% endfor %}
                     </ul>
@@ -162,19 +162,18 @@
             <div class="header-action">
               <ul class="action-list">
                 <li class="axil-search d-none-laptop">
+                  <form class="singin-form" action="/search" method="get">
                   <input
                     type="search"
                     class="placeholder product-search-input"
-                    name="search2"
-                    id="search2"
-                    value=""
-                    maxlength="128"
+                    name="search"
                     placeholder="Хайх үгээ энд бичнэ үү"
                     autocomplete="off"
                   />
                   <button type="submit" class="icon wooc-btn-search">
                     <i class="far fa-search"></i>
                   </button>
+                  </form>
                 </li>
                 <li class="axil-search d-none-desktop">
                   <a

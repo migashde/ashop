@@ -15,6 +15,16 @@ def home(request):
     }
     return HttpResponse(template.render(context, request))
 
+def search(request):
+    template = loader.get_template("search.html")
+    search_value = request.GET.get('search', '').lower()
+        
+    context = {
+        "search_value": search_value,
+        "products": Product.objects.prefetch_related('product_images_set').filter(product_name__icontains = search_value),
+    }
+    return HttpResponse(template.render(context, request))
+
 def login_view(request):
     if request.user.is_authenticated:
         return redirect("/")
