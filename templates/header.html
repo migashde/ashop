@@ -139,22 +139,20 @@
                       class="dropdown-menu"
                       aria-labelledby="dropdown-header-menu"
                     >
-                    {% for cat in categories %}
-                        <li>
-                            <a class="dropdown-item" href="/category/{{ cat.id }}">{{ cat.name }}</a>
-                        </li>
-                    {% endfor %}
+                      {% for cat in categories %}
+                      <li>
+                        <a class="dropdown-item" href="/category/{{ cat.id }}"
+                          >{{ cat.name }}</a
+                        >
+                      </li>
+                      {% endfor %}
                     </ul>
                   </li>
                   <li>
-                    <a href="shop-sidebar.html"
-                      ><i class="far fa-badge-percent"></i>Хямдарлууд</a
-                    >
+                    <a href="/sales"><i class="far fa-badge-percent"></i>Хямдарлууд</main>
                   </li>
                   <li>
-                    <a href="contact.html"
-                      ><i class="far fa-headset"></i>Тусламж</a
-                    >
+                    <a href="/contact"><i class="far fa-headset"></i>Тусламж</a>
                   </li>
                 </ul>
               </nav>
@@ -163,16 +161,16 @@
               <ul class="action-list">
                 <li class="axil-search d-none-laptop">
                   <form class="singin-form" action="/search" method="get">
-                  <input
-                    type="search"
-                    class="placeholder product-search-input"
-                    name="search"
-                    placeholder="Хайх үгээ энд бичнэ үү"
-                    autocomplete="off"
-                  />
-                  <button type="submit" class="icon wooc-btn-search">
-                    <i class="far fa-search"></i>
-                  </button>
+                    <input
+                      type="search"
+                      class="placeholder product-search-input"
+                      name="search"
+                      placeholder="Хайх үгээ энд бичнэ үү"
+                      autocomplete="off"
+                    />
+                    <button type="submit" class="icon wooc-btn-search">
+                      <i class="far fa-search"></i>
+                    </button>
                   </form>
                 </li>
                 <li class="axil-search d-none-desktop">
@@ -185,8 +183,8 @@
                   </a>
                 </li>
                 <li class="shopping-cart">
-                  <a href="#" class="cart-dropdown-btn">
-                    {% with total_items=cart|length %}
+                  <a href="/cart/view" class="cart-dropdown-btn">
+                    {% with total_items=cart_items|length %}
                     <span class="cart-count">{{total_items}}</span>
                     {% endwith %}
                     <i class="far fa-shopping-cart"></i>
@@ -204,7 +202,8 @@
                   </a>
                   {% else %}
                   <a href="/login">
-                    <i class="far fa-user" style="margin-right: 10px"></i> Нэвтрэх
+                    <i class="far fa-user" style="margin-right: 10px"></i>
+                    Нэвтрэх
                   </a>
                   {% endif %}
                 </li>
@@ -220,3 +219,5 @@
       </div>
       <!-- End Mainmenu Area -->
     </header>
+  </body>
+</html>

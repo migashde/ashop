@@ -57,7 +57,9 @@
                   <a href="/product/{{prod.id}}">{{ prod.product_name }}</a>
                 </h5>
                 <div class="product-price-variant">
+                  {% if prod.price != prod.sale %}
                   <span class="price old-price">{{ prod.price }}</span>
+                  {% endif %}
                   <span class="price current-price">{{ prod.sale }}</span>
                 </div>
               </div>

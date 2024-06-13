@@ -8,9 +8,11 @@ from products.models import Product
 
 
 def products(request, category_id):
-    template = loader.get_template("cat_view.html")
+    template = loader.get_template("product_list.html")
+    category = Category.objects.filter(pk=category_id).first()
     context = {
-        "category": Category.objects.filter(pk=category_id).first(),
+        "category": category,
+        "title": category.name,
         "products": Product.objects.prefetch_related('product_images_set').filter(category_id = category_id),
     }
     return HttpResponse(template.render(context, request))

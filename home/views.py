@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 from django.template import loader
+from django.db.models import F, Q
 
 from categories.models import Category
 from products.models import Product
@@ -16,12 +17,21 @@ def home(request):
     return HttpResponse(template.render(context, request))
 
 def search(request):
-    template = loader.get_template("search.html")
+    template = loader.get_template("product_list.html")
     search_value = request.GET.get('search', '').lower()
         
     context = {
-        "search_value": search_value,
-        "products": Product.objects.prefetch_related('product_images_set').filter(product_name__icontains = search_value),
+        "title": "Хайсан утга: " + search_value,
+        "products": Product.objects.prefetch_related('product_images_set').filter(Q(product_name__icontains=search_value) | Q(description__icontains=search_value)),
+    }
+    return HttpResponse(template.render(context, request))
+
+def sales(request):
+    template = loader.get_template("product_list.html")
+        
+    context = {
+        "title": "Хямдралтай бүтээгдэхүүнүүд",
+        "products": Product.objects.prefetch_related('product_images_set').filter(~Q(price=F('sale'))),
     }
     return HttpResponse(template.render(context, request))
 
@@ -45,3 +55,8 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect("/")
+
+def contact(request):
+    template = loader.get_template("contact.html")
+ 
+    return HttpResponse(template.render())

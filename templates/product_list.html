@@ -4,7 +4,7 @@
   <div class="axil-product-area bg-color-white section-gap-80-35">
     <div class="container">
       <div class="section-title-border">
-        <h2 class="title">Хайсан утга: {{ search_value }}</h2>
+        <h2 class="title">{{ title }}</h2>
       </div>
       <div class="row">
         {% for prod in products %}
@@ -28,7 +28,9 @@
                   <a href="/product/{{prod.id}}">{{ prod.product_name }}</a>
                 </h5>
                 <div class="product-price-variant">
+                  {% if prod.price != prod.sale %}
                   <span class="price old-price">{{ prod.price }}</span>
+                  {% endif %}
                   <span class="price current-price">{{ prod.sale }}</span>
                 </div>
               </div>

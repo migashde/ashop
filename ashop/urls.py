@@ -33,5 +33,7 @@ urlpatterns = [
     path('cart/add/<int:product_id>', cart.add_to_cart, name="cart_add"),
     path('cart/view', cart.cart_view, name="cart_view"),
     path('search', home.search, name="search"),
+    path('sales', home.sales, name="sales"),
+    path('contact', home.contact, name="contact"),
     path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
