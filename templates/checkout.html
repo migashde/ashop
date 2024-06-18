@@ -1,0 +1,68 @@
+{% include "header.html" %}
+{% load humanize %}
+<main class="main-wrapper">
+
+  <!-- Start Checkout Area  -->
+  <div class="axil-checkout-area axil-section-gap">
+      <div class="container">
+          <form action="#">
+              <div class="row">
+                  <div class="col-lg-6">
+                      <div class="axil-checkout-billing">
+                          <h4 class="title mb--40">Төлбөр хийх сонголтууд:</h4>
+                          <div class="bank-option" data-bank="bank1">
+                            <input type="radio" id="bank1" name="bank" value="bank1">
+                            <label for="bank1">
+                                <img src="https://play-lh.googleusercontent.com/Aw4bwCDJgAzu6AFAbbcfCFpheVMB6ZKiEM3JlrJ3cAM65fK-1QaTZZs_Vk4UFBzykQ" alt="Bank 1 Logo">
+                                Хаан банк
+                            </label>
+                        </div>
+                        <div class="bank-option" data-bank="bank2">
+                            <input type="radio" id="bank2" name="bank" value="bank2">
+                            <label for="bank2">
+                                <img src="https://play-lh.googleusercontent.com/oLKxnYGEgAyoxZ4rG6ogqzoLQMIUC7wrAuE7tca9PKWZubIev1t3CvvnJvpvj7KhKL4" alt="Bank 2 Logo">
+                                Худалдаа хөгжлийн банк
+                            </label>
+                        </div>
+                        <div class="bank-option" data-bank="bank3">
+                            <input type="radio" id="bank3" name="bank" value="bank3">
+                            <label for="bank3">
+                                <img src="https://play-lh.googleusercontent.com/9tUBesUsI4UIkpgO1MPIMLFvhDa_4vZE75TrVAUHFA7a0bJ7IIgeyh2r1QXs9VlmXmkX" alt="Bank 3 Logo">
+                                Голомт банк
+                            </label>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-6">
+                      <div class="axil-order-summery order-checkout-summery">
+                          <h5 class="title mb--20">Таны худалдан авалтын мэдээлэл</h5>
+                          <div class="summery-table-wrap">
+                              <table class="table summery-table">
+                                  <tbody>
+                                      <tr class="order-total">
+                                          <td>Нийт дүн</td>
+                                          <td class="order-total-amount">{{ total_price|intcomma }}</td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                          <button type="submit" class="axil-btn btn-bg-primary checkout-btn">Худалдан авах</button>
+                      </div>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+  <!-- End Checkout Area  -->
+
+</main>
+<script>
+    document.querySelectorAll('.bank-option').forEach(option => {
+        option.addEventListener('click', () => {
+            document.querySelectorAll('.bank-option').forEach(opt => opt.classList.remove('selected'));
+            option.classList.add('selected');
+            option.querySelector('input').checked = true;
+        });
+    });
+</script>
+{% include "footer.html" %}

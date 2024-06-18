@@ -355,3 +355,28 @@ a.content__text-link[data-fx="14"]:hover::after {
 		grid-column: span 3;
 	}
 }
+
+.bank-option {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	padding: 10px;
+	border: 2px solid transparent;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: border-color 0.3s;
+}
+.bank-option img {
+	width: 40px;
+	height: 40px;
+	margin-right: 10px;
+}
+.bank-option input {
+	display: none !important;
+	position: fixed;
+	opacity: 0;
+	pointer-events: none;
+}
+.bank-option.selected {
+	border-color: blue;
+}

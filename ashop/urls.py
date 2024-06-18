@@ -32,6 +32,7 @@ urlpatterns = [
     path('logout', home.logout_view, name="logout"),
     path('cart/add/<int:product_id>', cart.add_to_cart, name="cart_add"),
     path('cart/view', cart.cart_view, name="cart_view"),
+    path('cart/checkout', cart.checkout, name="checkout"),
     path('search', home.search, name="search"),
     path('sales', home.sales, name="sales"),
     path('contact', home.contact, name="contact"),
