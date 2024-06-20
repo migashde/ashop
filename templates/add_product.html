@@ -1,0 +1,68 @@
+{% include "header.html" %}
+<main class="main-wrapper">
+  <div class="axil-checkout-area axil-section-gap">
+    <div class="container">
+      <div class="axil-checkout-billing">
+        <h4 class="title mb--40">Бараа нэмэх</h4>
+        <form class="singin-form" action="/product/add" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label>Төрөл <span>*</span></label>
+                <select name="category">
+                  {% for cat in categories %}
+                  <option value="{{ cat.id }}">{{ cat.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label>Барааны нэр <span>*</span></label>
+                <input type="text" name="product_name" />
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label>Тоо ширхэг <span>*</span></label>
+                <input type="number" name="quantity" />
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label>Үнэ</label>
+                <input type="number" name="price" />
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label>Хямдрал</label>
+                <input type="number" name="sale" />
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label>Тайлбар</label>
+                <textarea name="description"></textarea>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <label for="images">Images:</label>
+              <input type="file" id="images" name="images" multiple>
+            </div><br><br><br><br>
+            <div class="col-lg-12">
+              <button
+                type="submit"
+                class="axil-btn btn-bg-primary checkout-btn"
+              >
+                Нэмэх
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% include "footer.html" %}
